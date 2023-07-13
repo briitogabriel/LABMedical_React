@@ -7,9 +7,16 @@ export const FormLoginComponent = () => {
   const redirectToLogin = () => {
     navigate('/home')
   }
+  const redirectToForgot = () => {
+    navigate('/forgot-password')
+  }
+  const redirectToCreate = () => {
+    navigate('/create-account')
+  }
 
   return (
     <Styled.Form onSubmit={redirectToLogin}>
+      <button onClick={redirectToCreate}>Criar conta</button>
       <Styled.Header>
         <legend>Login</legend>
       </Styled.Header>
@@ -28,8 +35,7 @@ export const FormLoginComponent = () => {
       <Styled.Button type="submit">Entrar</Styled.Button>
 
       <Styled.Action>
-        <a href="">Esqueci minha senha</a>
-        <button >Criar conta</button>
+        <span onClick={redirectToForgot}>Esqueci minha senha</span>
       </Styled.Action>
     </Styled.Form>
   )

@@ -1,5 +1,6 @@
 :root {
   --blue-100: #cee4ef;
+  --blue-400: #006a9f;
 }
 
 body {
@@ -19,4 +20,5 @@ body {
 
 img {
   width: 500px;
+  border-right: 2px solid var(--blue-400);
 }
