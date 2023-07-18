@@ -5,7 +5,7 @@ import { FormLoginComponent } from '../../components/FormLoginComponent/FormLogi
 export default function LoginPage() {
   return (
     <div className='login'>
-      <img src="../../../public/images/doctor-form.jpg" alt="doctor form image" />
+      <img src="./images/doctor-form.jpg" alt="doctor form image" />
       <FormLoginComponent />
     </div>
   )
