@@ -46,21 +46,19 @@ export const FormLoginComponent = () => {
 
   return (
     <Styled.Form onSubmit={handleSubmit}>
-      <button onClick={redirectToCreate}>Criar conta</button>
+      <Styled.Button onClick={redirectToCreate}>Criar conta</Styled.Button>
       <Styled.Header>
         <legend>Login</legend>
       </Styled.Header>
 
-      <Styled.InputGroup>
-        <div className="input-group">
+        <Styled.InputGroup>
           <label htmlFor="email">E-mail</label>
           <input type="email" id='email' placeholder="Digite seu e-mail" ref={emailInput} />
-        </div>
-        <div className="input-group">
+        </Styled.InputGroup>
+        <Styled.InputGroup>
           <label htmlFor="password">Senha</label>
           <input type="password" id='password' placeholder="Digite sua senha" ref={passwordInput} />
-        </div>
-      </Styled.InputGroup>
+        </Styled.InputGroup>
 
       <Styled.Button type="submit">Entrar</Styled.Button>
 

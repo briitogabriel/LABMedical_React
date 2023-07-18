@@ -2,15 +2,30 @@ import styled from 'styled-components'
 
 export const Form = styled.form`
   display: inline-flex;
-  padding: 2rem;
+  padding: 0 4rem;
   flex-direction: column;
   justify-content: center;
+  min-width: 40vw
 `;
 export const Header = styled.div``;
+
 export const InputGroup = styled.div`
   display: inline-flex;
-  padding: 1rem;
   flex-direction: column;
+  width: 100%;
 `;
-export const Button = styled.button``;
-export const Action = styled.div``;
+export const Button = styled.button`
+  border-radius: 5px;
+  margin: 1rem 0;
+  width: 100%;
+  &:hover {
+    background-color: #c9d0d3;
+  }
+`;
+
+export const Action = styled.div`
+  cursor: pointer;
+  &:hover {
+    color: #006a9f
+  }
+`;
