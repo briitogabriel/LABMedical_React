@@ -10,14 +10,12 @@ export const FormLoginComponent = () => {
   const redirectToLogin = () => {
     navigate('/home')
   }
-  const redirectToForgot = () => {
-    console.log('Recurso ainda em desenvolvimento!')
-  }
   
   const emailInput = useRef();
   const passwordInput = useRef();
   const newEmailInput = useRef();
   const newPasswordInput = useRef();
+  const newPasswordConfirm = useRef();
 
   const handleAuth = () => {
     const inputData = {
@@ -27,14 +25,24 @@ export const FormLoginComponent = () => {
 
     const userFound = registeredUser.filter(user => ( user.email == inputData.email ))
 
+    const alertPlaceholder2 = document.getElementById('liveAlertPlaceholder2')
+    const appendAlert2 = (message, type) => {
+      alertPlaceholder2.innerHTML = [
+        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+        `   <div>${message}</div>`,
+        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '</div>'
+      ].join('')
+    }
+
     if (userFound.length > 0) {
       if (userFound[0].password == inputData.password) {
         redirectToLogin()
       } else {
-        console.log('Wrong password')
+        return appendAlert2('Senha incorreta', 'danger')
       }
     } else {
-      console.log('User not registered')
+      return appendAlert2('Usuário não registrado', 'danger')
     }
   }
 
@@ -43,26 +51,52 @@ export const FormLoginComponent = () => {
     handleAuth();
   }
 
+  const isValidEmail = (email) => {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+  }
+  const isValidPassword = (password) => {
+    return password.length >= 8;
+  }
+
   const handleRegister = (e) => {
     e.preventDefault();
-
+    
     const newInputData = {
       email: newEmailInput.current?.value,
       password: newPasswordInput.current?.value,
+      passwordConfirm: newPasswordConfirm.current?.value,
     }
 
-    if (!newInputData.email || !newInputData.password) {
-      return console.log('Digite um e-mail e senha')
+    const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+    const appendAlert = (message, type) => {
+      alertPlaceholder.innerHTML = [
+        `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+        `   <div>${message}</div>`,
+        '   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+        '</div>'
+      ].join('')
+    }
+
+    if (!newInputData.email || !isValidEmail(newInputData.email)) {
+      return appendAlert('Digite um endereço de e-mail válido', 'danger')
+    } else if (!isValidPassword(newInputData.password)) {
+      return appendAlert('A senha deve ter no mínimo 8 caracteres', 'danger')
+    } else if (newInputData.password != newInputData.passwordConfirm) {
+      return appendAlert('As senhas não são iguais', 'danger')
     }
 
     const userFound = registeredUser.filter(user => ( user.email == newInputData.email ))
 
     if (userFound.length == 0) {
-      registeredUser.push(newInputData)
+      registeredUser.push({
+        email: newEmailInput.current?.value,
+        password: newPasswordInput.current?.value,
+      })
       localStorage.setItem('registered-user', JSON.stringify(registeredUser))
-      console.log(`Usuário ${newInputData.email} registrado`)
+      appendAlert(`Usuário ${newInputData.email} registrado`, 'success')
     } else {
-      console.log(`Usuário ${newInputData.email} já existe!`)
+      appendAlert(`Usuário ${newInputData.email} já existe!`, 'danger')
     }
 
   }
@@ -72,7 +106,7 @@ export const FormLoginComponent = () => {
     
       <Styled.Form onSubmit={handleSubmit}>
 
-        <Styled.Button onClick={(e) => e.preventDefault()} data-bs-toggle="modal" data-bs-target="#staticBackdrop">Criar conta</Styled.Button>
+        <Styled.Button onClick={(e) => e.preventDefault()} data-bs-toggle="modal" data-bs-target="#backdrop">Criar conta</Styled.Button>
 
         <Styled.Header>
           <legend>Login</legend>
@@ -88,20 +122,22 @@ export const FormLoginComponent = () => {
           </Styled.InputGroup>
 
         <Styled.Button type="submit">Entrar</Styled.Button>
+        
+        <div id="liveAlertPlaceholder2"></div>
 
         <Styled.Action>
-          <span onClick={redirectToForgot}>Esqueci minha senha</span>
+          <span data-bs-toggle="modal" data-bs-target="#exampleModal">Esqueci minha senha</span>
         </Styled.Action>
 
       </Styled.Form>
       
 
-      {/* <!-- Modal --> */}
-      <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      {/* <!-- Modal Register User --> */}
+      <div className="modal fade" id="backdrop" tabIndex="-1" aria-labelledby="backdropLabel" aria-hidden="true">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
-              <h1 className="modal-title fs-5" id="staticBackdropLabel">Cadastro de Usuário</h1>
+              <h1 className="modal-title fs-5" id="backdropLabel">Cadastro de Usuário</h1>
               <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div className="modal-body">
@@ -113,10 +149,31 @@ export const FormLoginComponent = () => {
                 <label htmlFor="newPassword">Senha</label>
                 <input type="password" id='newPassword' placeholder="Digite uma senha" ref={newPasswordInput} />
               </Styled.InputGroup>
+            <Styled.InputGroup>
+                <label htmlFor="newPasswordConfirm">Confirmar senha</label>
+                <input type="password" id='newPasswordConfirm' placeholder="Digite novamente a senha" ref={newPasswordConfirm} />
+              </Styled.InputGroup>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
               <button type="button" className="btn btn-primary" onClick={handleRegister}>Criar</button>
+            </div>
+            <div id="liveAlertPlaceholder"></div>
+          </div>
+        </div>
+      </div>
+
+      {/* <!-- Modal  --> */}
+      <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">Aviso "Esqueci minha senha"</h1>
+              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div className="modal-body">Recurso ainda em desenvolvimento!</div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
