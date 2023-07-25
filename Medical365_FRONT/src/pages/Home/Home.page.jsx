@@ -4,7 +4,6 @@ import { Navigate } from "react-router-dom";
 
 export const HomePage = () => {
   const { auth } = useContext(AuthContext);
-  console.log(auth)
 
   const render = () => {
     return(
