@@ -1,14 +1,18 @@
 import { useNavigate } from 'react-router-dom'
 import * as Styled from './FormLoginComponent.style.jsx'
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
+import { AuthContext } from '../../contexts/auth/auth.context.jsx';
 
-const registeredUser = JSON.parse(localStorage.getItem('registered-user')) || [{ email: 'admin@admin.com', password: 'admin123' }];
 
 export const FormLoginComponent = () => {
+  const registeredUser = JSON.parse(localStorage.getItem('registered-user')) || [{ email: 'admin@admin.com', password: 'admin123' }];
+  
+  const { setAuth } = useContext(AuthContext);
 
   const navigate = useNavigate();
-  const redirectToLogin = () => {
-    navigate('/home')
+  const redirectToHome = (user) => {
+    setAuth({ user, isLogged: true })
+    navigate('/')
   }
   
   const emailInput = useRef();
@@ -37,7 +41,7 @@ export const FormLoginComponent = () => {
 
     if (userFound.length > 0) {
       if (userFound[0].password == inputData.password) {
-        redirectToLogin()
+        redirectToHome(userFound[0])
       } else {
         return appendAlert2('Senha incorreta', 'danger')
       }
