@@ -12,6 +12,7 @@ export const FormLoginComponent = () => {
   const navigate = useNavigate();
   const redirectToHome = (user) => {
     setAuth({ user, isLogged: true })
+    localStorage.setItem('logged-user', JSON.stringify({ user, isLogged: true }))
     navigate('/')
   }
   
