@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 
 export const HomePage = () => {
   const { auth } = useContext(AuthContext);
+  const loggedUser = JSON.parse(localStorage.getItem('logged-user'))
 
   const render = () => {
     return(
@@ -13,5 +14,5 @@ export const HomePage = () => {
     )
   }
 
-  return auth.isLogged ? render() : <Navigate to='/login'/>
+  return auth.isLogged || loggedUser.isLogged ? render() : <Navigate to='/login'/>
 }
