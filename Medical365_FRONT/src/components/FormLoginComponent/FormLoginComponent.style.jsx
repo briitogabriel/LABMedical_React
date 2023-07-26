@@ -19,13 +19,13 @@ export const Button = styled.button`
   margin: 1rem 0;
   width: 100%;
   &:hover {
-    background-color: #c9d0d3;
+    background-color: var(--blue-200);
   }
 `;
 
 export const Action = styled.div`
   cursor: pointer;
   &:hover {
-    color: #006a9f
+    color: var(--blue-400);
   }
 `;

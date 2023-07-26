@@ -8,7 +8,7 @@ export const App = styled.div`
 `;
 
 export const Sidebar = styled.div`
-  width: ${({$open}) => $open ? '20%' : '10%'};
+  width: ${({$open}) => $open ? '20%' : '5%'};
   height: 100%;
   background-color: aquamarine;
 `;
@@ -23,10 +23,10 @@ export const Main = styled.main`
 
 export const Header = styled.header`
   height: 50px;
-  background-color: black;
+  background-color: var(--blue-300);
   color: #FFF;
   width: 100%;
-
+  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: flex-end;
