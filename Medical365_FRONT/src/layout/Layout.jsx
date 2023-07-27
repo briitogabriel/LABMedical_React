@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Outlet } from 'react-router';
 
 import * as Styled from './Layout.style';
+import ToolbarComponent from '../components/ToolBarComponent/ToolbarComponent';
 export const Layout = () => {
   const [menuOpen, setMenuOpen] = useState(true);
 
@@ -26,7 +27,9 @@ export const Layout = () => {
 
       <Styled.Main>
           {/* HeaderComponent */}
-          <Styled.Header>e</Styled.Header>
+          <Styled.Header>
+            <ToolbarComponent />
+          </Styled.Header>
 
           {/* Componente de pagina */}
           <Styled.Content>
