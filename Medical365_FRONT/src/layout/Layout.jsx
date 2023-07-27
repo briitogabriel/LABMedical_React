@@ -6,14 +6,6 @@ import ToolbarComponent from '../components/ToolBarComponent/ToolbarComponent';
 export const Layout = () => {
   const [menuOpen, setMenuOpen] = useState(true);
 
-  const getIcon = (icone) => {
-    switch(icone) {
-      case 'user': return <ImUser/>;
-      case 'heart': return <ImHeart/>;
-      default: return <ImBubbles3/>;
-    }
-  }
-
   return(
     <Styled.App>
       {/* NavSidebarComponent */}
