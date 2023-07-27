@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { AuthContext } from "../../contexts/auth/auth.context"
 import * as Styled from './ToolbarComponent.style.jsx'
+import { AiOutlineUser } from 'react-icons/ai';
 
 export default function ToolbarComponent() {
   
@@ -13,7 +14,9 @@ export default function ToolbarComponent() {
       ESTATÍSTICAS E INFORMAÇÕES
       <Styled.UserInfo>
         {username}
-        <Styled.Icon />
+        <Styled.Icon>
+          <AiOutlineUser size={28}/>
+        </Styled.Icon>
       </Styled.UserInfo>
     </Styled.Nav>
   )

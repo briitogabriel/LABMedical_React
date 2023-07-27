@@ -2,10 +2,13 @@ import styled from 'styled-components'
 
 export const Icon = styled.div`
   border-radius: 50%;
-  background-color: gray;
+  background-color: var(--blue-100);
   height: 40px;
   width: 40px;
   border: 1px solid black;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 `;
 
 export const Nav = styled.nav`
