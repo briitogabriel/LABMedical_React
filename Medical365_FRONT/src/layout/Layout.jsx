@@ -1,21 +1,14 @@
-import { useState } from 'react';
 import { Outlet } from 'react-router';
 
 import * as Styled from './Layout.style';
 import ToolbarComponent from '../components/ToolBarComponent/ToolbarComponent';
-export const Layout = () => {
-  const [menuOpen, setMenuOpen] = useState(true);
+import SidebarComponent from '../components/SidebarComponent/SidebarComponent';
 
+export const Layout = () => {
   return(
     <Styled.App>
       {/* NavSidebarComponent */}
-      <Styled.Sidebar $open={menuOpen}>
-        a 
-
-        <button onClick={() => {setMenuOpen(!menuOpen)}}>
-          { menuOpen ? '<' : '>' }
-        </button>
-      </Styled.Sidebar>
+      <SidebarComponent />
 
       <Styled.Main>
           {/* HeaderComponent */}

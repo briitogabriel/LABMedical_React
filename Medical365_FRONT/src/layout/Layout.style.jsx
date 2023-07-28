@@ -7,12 +7,6 @@ export const App = styled.div`
   background-color: #efefef;
 `;
 
-export const Sidebar = styled.div`
-  width: ${({$open}) => $open ? '20%' : '5%'};
-  height: 100%;
-  background-color: aquamarine;
-`;
-
 export const Main = styled.main`
   display: flex;
   flex: 1 0 0;
@@ -46,7 +40,6 @@ export const Footer = styled.footer`
   height: 50px;
   background-color: grey;
   width: 100%;
-
   display: flex;
   align-items: center;
   justify-content: center;
