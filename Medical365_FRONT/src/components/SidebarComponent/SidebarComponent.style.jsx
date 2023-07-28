@@ -17,6 +17,7 @@ export const Img = styled.img`
   width: ${({$open}) => $open ? '50%' : '0%'};
   border: none;
   transition: width 0.5s;
+  margin-bottom: 20%;
 `;
 
 export const Button = styled.button`
