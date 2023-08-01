@@ -20,9 +20,6 @@ export const Layout = () => {
           <Styled.Content>
             <Outlet />
           </Styled.Content>
-
-        {/* FooterComponent*/}
-        <Styled.Footer>m</Styled.Footer>
       </Styled.Main>
     </Styled.App>
   );
