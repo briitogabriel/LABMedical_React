@@ -71,10 +71,12 @@ export const HomePage = () => {
 
         
         <h1>Informações Rápidas de Pacientes</h1>
+        
         <Styled.PatientInput>
           <Styled.InputText type="text" id='patientInput' placeholder="Digite o nome, telefone ou e-mail do paciente" ref={patientInput} />
           <Styled.SearchButton type="button" onClick={handleSearchButton}>Buscar</Styled.SearchButton>
         </Styled.PatientInput>
+
         <Styled.GridContainer>
           <PatientCardComponent patientData={patientData} />
         </Styled.GridContainer>

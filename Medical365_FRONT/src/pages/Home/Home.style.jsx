@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Homepage = styled.div`
-  margin-top: 45px;
+  padding-top: 200px;
   display: flex;
   flex-direction: column;
 `;
