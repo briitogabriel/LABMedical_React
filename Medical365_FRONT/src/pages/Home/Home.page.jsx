@@ -1,6 +1,9 @@
 import { useContext } from "react"
 import { AuthContext } from "../../contexts/auth/auth.context"
 import { Navigate } from "react-router-dom";
+import { StatisticComponent } from "../../components/StatisticComponent/StatisticComponent";
+
+import * as Styled from './Home.style'
 
 export const HomePage = () => {
   const { auth } = useContext(AuthContext);
@@ -8,9 +11,14 @@ export const HomePage = () => {
 
   const render = () => {
     return(
-      <>
-        <p>HomePage is Render</p>
-      </>
+      <Styled.Homepage>
+        <h1>Estatísticas do Sistema</h1>
+        <Styled.StatisticCards>
+          <StatisticComponent />
+          <StatisticComponent />
+          <StatisticComponent />
+        </Styled.StatisticCards>
+      </Styled.Homepage>
     )
   }
 
