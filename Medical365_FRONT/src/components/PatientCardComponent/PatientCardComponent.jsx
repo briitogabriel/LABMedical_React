@@ -10,6 +10,7 @@ export const PatientCardComponent = ({ patientData }) => {
           <p>{patient.age}</p>
           <p>{patient.phone}</p>
           <p>{patient.plan}</p>
+          <button>Ver mais</button>
         </Styled.Card>
       ))}
     </>

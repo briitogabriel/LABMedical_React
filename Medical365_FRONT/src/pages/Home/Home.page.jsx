@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useRef } from "react"
 import { AuthContext } from "../../contexts/auth/auth.context"
 import { Navigate } from "react-router-dom";
 import { StatisticComponent } from "../../components/StatisticComponent/StatisticComponent";
@@ -14,6 +14,12 @@ import { PatientCardComponent } from "../../components/PatientCardComponent/Pati
 export const HomePage = () => {
   const { auth } = useContext(AuthContext);
   const loggedUser = JSON.parse(localStorage.getItem('logged-user'))
+  
+  const patientInput = useRef();
+
+  const handleSearchButton = () => {
+    console.log('clicou')
+  }
 
   const patientData = [
     {
@@ -65,6 +71,10 @@ export const HomePage = () => {
 
         
         <h1>Informações Rápidas de Pacientes</h1>
+        <Styled.PatientInput>
+          <Styled.InputText type="text" id='patientInput' placeholder="Digite o nome, telefone ou e-mail do paciente" ref={patientInput} />
+          <Styled.SearchButton type="button" onClick={handleSearchButton}>Buscar</Styled.SearchButton>
+        </Styled.PatientInput>
         <Styled.GridContainer>
           <PatientCardComponent patientData={patientData} />
         </Styled.GridContainer>
