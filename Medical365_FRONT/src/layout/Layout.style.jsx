@@ -29,7 +29,7 @@ export const Content = styled.div`
   display: flex;
   height: calc(100vh - 50px);
   overflow: auto;
-  padding-top: 70px;
+  padding: 100px 0 30px;
   align-items: center;
   justify-content: center;
   background-color: #fff;
