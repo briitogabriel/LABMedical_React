@@ -4,6 +4,10 @@ import { Navigate } from "react-router-dom";
 import { StatisticComponent } from "../../components/StatisticComponent/StatisticComponent";
 
 import { BiSolidUserCircle } from 'react-icons/bi';
+import { IoPeopleCircleOutline } from 'react-icons/io5';
+import { FaNotesMedical } from 'react-icons/fa';
+import { GiMedicalDrip } from 'react-icons/gi';
+
 import * as Styled from './Home.style'
 import { PatientCardComponent } from "../../components/PatientCardComponent/PatientCardComponent";
 
@@ -54,9 +58,9 @@ export const HomePage = () => {
       <Styled.Homepage>
         <h1>Estatísticas do Sistema</h1>
         <Styled.StatisticCards>
-          <StatisticComponent />
-          <StatisticComponent />
-          <StatisticComponent />
+          <StatisticComponent icon={IoPeopleCircleOutline} amount={99} statisticTitle={'Pacientes'} />
+          <StatisticComponent icon={FaNotesMedical} amount={10} statisticTitle={'Consultas'} />
+          <StatisticComponent icon={GiMedicalDrip} amount={51} statisticTitle={'Exames'} />
         </Styled.StatisticCards>
 
         
