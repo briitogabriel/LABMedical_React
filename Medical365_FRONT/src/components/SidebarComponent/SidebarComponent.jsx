@@ -14,9 +14,9 @@ export default function SidebarComponent() {
     <Styled.Sidebar $open={menuOpen}>
       <Styled.Img src="./images/LABMedical Logo.png" alt="LABMedical Logo" $open={menuOpen} />
 
-      <MenuGroup title={'Geral'} btn1={'INÍCIO'} icon1={<BiStats/>} btn2={'SAIR'} icon2={<BiLogOut/>} open={menuOpen}/>
-      <MenuGroup title={'Pacientes'} btn1={'CADASTRAR'} icon1={<BiPlus/>} btn2={'LISTAR PRONTUÁRIO'} icon2={<BiListUl/>} open={menuOpen}/>
-      <MenuGroup title={'Exames'} btn1={'CADASTRAR CONSULTA'} icon1={<BiPlus/>} btn2={'CADASTRAR EXAME'} icon2={<BiPlus/>} open={menuOpen}/>
+      <MenuGroup title={'Geral'} btn1={{navigation:'/', text:'INÍCIO'}} icon1={<BiStats/>} btn2={{navigation:'/login', text:'SAIR'}} icon2={<BiLogOut/>} open={menuOpen}/>
+      <MenuGroup title={'Pacientes'} btn1={{navigation:'/register-patient', text:'CADASTRAR'}} icon1={<BiPlus/>} btn2={{navigation:'/medical-records', text:'LISTAR PRONTUÁRIO'}} icon2={<BiListUl/>} open={menuOpen}/>
+      <MenuGroup title={'Exames'} btn1={{navigation:'/register-appointment', text:'CADASTRAR CONSULTA'}} icon1={<BiPlus/>} btn2={{navigation:'/register-exam', text:'CADASTRAR EXAME'}} icon2={<BiPlus/>} open={menuOpen}/>
 
       <Styled.Button onClick={() => {setMenuOpen(!menuOpen)}}>
         { menuOpen ? <AiOutlineClose /> : <AiOutlineMenu /> }
