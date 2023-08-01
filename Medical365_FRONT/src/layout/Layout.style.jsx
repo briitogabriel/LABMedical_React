@@ -11,7 +11,6 @@ export const Main = styled.main`
   display: flex;
   flex: 1 0 0;
   flex-direction: column;
-  gap: 16px;
   height: 100%;
 `;
 
@@ -28,6 +27,9 @@ export const Header = styled.header`
 
 export const Content = styled.div`
   display: flex;
+  height: calc(100vh - 50px);
+  overflow: auto;
+  padding-bottom: 30px;
   align-items: center;
   justify-content: center;
   background-color: #fff;
@@ -35,12 +37,3 @@ export const Content = styled.div`
   flex: 1;
   width: 100%;
 `
-
-export const Footer = styled.footer`
-  height: 50px;
-  background-color: grey;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
