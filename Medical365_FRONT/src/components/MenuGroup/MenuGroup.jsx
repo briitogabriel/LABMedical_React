@@ -11,9 +11,9 @@ export default function MenuGroup({ title, btn1, icon1, btn2, icon2, open }) {
   const handleRedirect = (route) => {
     if (route == '/login') {
       let user = JSON.parse(localStorage.getItem('logged-user'))
+      localStorage.removeItem('logged-user')
       user.isLogged = false 
       setAuth(user)
-      localStorage.setItem('logged-user', JSON.stringify(user))
     } 
       navigate(route)
   }
