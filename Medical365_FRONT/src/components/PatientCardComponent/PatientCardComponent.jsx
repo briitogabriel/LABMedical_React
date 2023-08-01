@@ -1,6 +1,14 @@
 import * as Styled from './PatientCardComponent.style'
+import { useNavigate } from 'react-router-dom'
+
+// const navigate = useNavigate();
 
 export const PatientCardComponent = ({ patientData }) => {
+
+  const handleSeeMore = () => {
+    // navigate('/')
+    console.log('Ver mais')
+  }
   return (
     <>
       {patientData.map((patient, index) => (
@@ -10,7 +18,7 @@ export const PatientCardComponent = ({ patientData }) => {
           <p>{patient.age}</p>
           <p>{patient.phone}</p>
           <p>{patient.plan}</p>
-          <button>Ver mais</button>
+          <button onClick={handleSeeMore}>Ver mais</button>
         </Styled.Card>
       ))}
     </>
