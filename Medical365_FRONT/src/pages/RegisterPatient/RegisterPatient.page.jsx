@@ -28,6 +28,10 @@ export const RegisterPatient = () => {
         <RegisterPatientInput inputId={'phone'} inputType={'text'} inputCols={4} inputPlaceholder={'Telefone'} />
         <RegisterPatientInput inputId={'email'} inputType={'email'} inputCols={4} inputPlaceholder={'E-mail'} />
         <RegisterPatientInput inputId={'placeOfBirth'} inputType={'text'} inputCols={4} inputPlaceholder={'Naturalidade'} />
+
+        <RegisterPatientInput inputId={'emergencyContact'} inputType={'text'} inputCols={4} inputPlaceholder={'Contato de Emergência'} />
+        <RegisterPatientInput inputId={'allegries'} inputType={'text'} inputCols={4} inputPlaceholder={'Alergias'} />
+        <RegisterPatientInput inputId={'specialCares'} inputType={'text'} inputCols={4} inputPlaceholder={'Cuidados Especiais'} />
         
         <h3>Convênio</h3>
 
