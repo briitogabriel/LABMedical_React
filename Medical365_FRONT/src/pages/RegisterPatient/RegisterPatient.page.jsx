@@ -2,21 +2,22 @@ import * as Styled from './RegisterPatient.style'
 
 import { useFormik } from 'formik';
 import RegisterPatientSchema from '../../schemas/RegisterPatientSchema';
+import GetCEP from '../../services/getCEP/getCEP';
 
 const initialValues = {
   fullName: '',
-  gender: '',
+  gender: 'Masculino',
   birthDate: '',
   age: '',
   cpf: '',
   rg: '',
-  civilState: '',
+  civilState: 'Solteiro/a',
   phone: '',
   email: '',
   placeOfBirth: '',
   emergencyContact: '',
-  allergies: [],
-  specificCare: [],
+  allergies: '',
+  specificCare: '',
   insurance: '',
   insuranceNumber: '',
   validUntil: '',
@@ -32,7 +33,6 @@ const initialValues = {
 
 export const RegisterPatient = () => {
   const registeredPatients = JSON.parse(localStorage.getItem('registered-patients')) || [];
-  console.log(RegisterPatientSchema)
 
   const getMaxId = (patientList) => {  
     const maxId = patientList.reduce((max, item) => {
@@ -40,6 +40,23 @@ export const RegisterPatient = () => {
     }, patientList[0].id);
     return maxId;
   };
+
+  const handleCEPChange = async (CEP) => {
+    try {
+      const CEPinfo = await GetCEP(CEP);
+
+      formik.setValues({
+        ...formik.values,
+        city: CEPinfo.localidade || '',
+        state: CEPinfo.uf || '',
+        address: CEPinfo.logradouro || '',
+        complement: CEPinfo.complemento || '',
+        district: CEPinfo.bairro || '',
+      });
+    } catch (error) {
+      alert('Erro ao buscar o CEP');
+    }
+  }
 
   const formik = useFormik({
     initialValues,
@@ -157,7 +174,7 @@ export const RegisterPatient = () => {
         </Styled.InputGroup>
         <Styled.InputGroup className={`col-md-4`}>
           <Styled.Label htmlFor='insuranceNumber' className="form-label">Número Carteira</Styled.Label>
-          <input name='insuranceNumber' type='number' className="form-control" id='insuranceNumber' onChange={formik.handleChange} value={formik.values.insuranceNumber} />
+          <input name='insuranceNumber' type='text' className="form-control" id='insuranceNumber' onChange={formik.handleChange} value={formik.values.insuranceNumber} />
           {formik.touched.insuranceNumber && formik.errors.insuranceNumber && (<Styled.Error>{formik.errors.insuranceNumber}</Styled.Error>)}
         </Styled.InputGroup>
         <Styled.InputGroup className={`col-md-4`}>
@@ -170,7 +187,7 @@ export const RegisterPatient = () => {
 
         <Styled.InputGroup className={`col-md-4`}>
           <Styled.Label htmlFor='cep' className="form-label">CEP</Styled.Label>
-          <input name='cep' type='text' className="form-control" id='cep' onChange={formik.handleChange} value={formik.values.cep} />
+          <input name='cep' type='text' className="form-control" id='cep' onChange={formik.handleChange} onBlur={() => handleCEPChange(formik.values.cep)} value={formik.values.cep} />
           {formik.touched.cep && formik.errors.cep && (<Styled.Error>{formik.errors.cep}</Styled.Error>)}
         </Styled.InputGroup>
         <Styled.InputGroup className={`col-md-6`}>
@@ -191,7 +208,7 @@ export const RegisterPatient = () => {
         </Styled.InputGroup>
         <Styled.InputGroup className={`col-md-2`}>
           <Styled.Label htmlFor='addressNumber' className="form-label">Número</Styled.Label>
-          <input name='addressNumber' type='number' className="form-control" id='addressNumber' onChange={formik.handleChange} value={formik.values.addressNumber} />
+          <input name='addressNumber' type='text' className="form-control" id='addressNumber' onChange={formik.handleChange} value={formik.values.addressNumber} />
           {formik.touched.addressNumber && formik.errors.addressNumber && (<Styled.Error>{formik.errors.addressNumber}</Styled.Error>)}
         </Styled.InputGroup>
 

@@ -22,8 +22,8 @@ const RegisterPatientSchema = Yup.object().shape({
     .min(5, 'Naturalidade deve ter pelo menos 5 caracteres')
     .max(50, 'Naturalidade deve ter no máximo 50 caracteres'),
   emergencyContact: Yup.string().matches(/^\(\d{2}\) \d{4}-\d{4}$|^\(\d{2}\) \d{5}-\d{4}$/, 'Contato de emergência inválido'),
-  allergies: Yup.array(),
-  specificCare: Yup.array(),
+  allergies: Yup.string(),
+  specificCare: Yup.string(),
   insurance: Yup.string(),
   insuranceNumber: Yup.string(),
   validUntil: Yup.date(),
