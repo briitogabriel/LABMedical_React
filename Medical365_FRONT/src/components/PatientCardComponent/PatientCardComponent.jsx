@@ -9,15 +9,16 @@ export const PatientCardComponent = ({ patientData }) => {
     // navigate('/')
     console.log('Ver mais')
   }
-  return (
+
+    return (
     <>
       {patientData.map((patient, index) => (
         <Styled.Card key={index}>
-          <Styled.Icon>{<patient.icon size={45} />}</Styled.Icon>
+          <Styled.Icon><Styled.Img src={patient.icon} alt='Ícone de usuário'/></Styled.Icon>
           <h3>{patient.name}</h3>
           <p>{patient.age}</p>
           <p>{patient.phone}</p>
-          <p>{patient.plan}</p>
+          <p>{patient.insurance}</p>
           <button onClick={handleSeeMore}>Ver mais</button>
         </Styled.Card>
       ))}
