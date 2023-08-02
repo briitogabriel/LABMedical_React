@@ -13,9 +13,9 @@ function App() {
         <Route path='/login' element={<LoginPage/>} />
         <Route path='/' element={<Layout/>}>
           <Route path='/' element={<HomePage/>}/>
-          <Route path='/register-patient' element={<RegisterPatient />}/>
+          <Route path='/registrar-paciente' element={<RegisterPatient />}/>
+          <Route path='*' element={<h1>Página não encontrada!</h1>} />
         </Route>
-        {/* <Route path='*' element={<ErrorPage/>} /> */}
       </Routes>
     </Router>
   )
