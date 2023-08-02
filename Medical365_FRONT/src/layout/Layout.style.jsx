@@ -30,7 +30,6 @@ export const Content = styled.div`
   height: calc(100vh - 50px);
   overflow: auto;
   padding-bottom: 30px;
-  align-items: center;
   justify-content: center;
   background-color: #fff;
   color: #666;

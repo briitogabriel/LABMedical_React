@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Homepage = styled.div`
-  padding-top: 200px;
+  padding-top: 10px;
   display: flex;
   flex-direction: column;
 `;
