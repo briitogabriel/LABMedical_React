@@ -12,3 +12,9 @@ export const Card = styled.div`
 export const Icon = styled.span`
   margin-right: 8px;
 `;
+
+export const Img = styled.img`
+  width:40px;
+  height: 40px;
+  border: none;
+`;

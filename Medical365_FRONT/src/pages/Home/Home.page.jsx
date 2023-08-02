@@ -3,7 +3,6 @@ import { AuthContext } from "../../contexts/auth/auth.context"
 import { Navigate } from "react-router-dom";
 import { StatisticComponent } from "../../components/StatisticComponent/StatisticComponent";
 
-import { BiSolidUserCircle } from 'react-icons/bi';
 import { IoPeopleCircleOutline } from 'react-icons/io5';
 import { FaNotesMedical } from 'react-icons/fa';
 import { GiMedicalDrip } from 'react-icons/gi';
@@ -14,48 +13,48 @@ import { PatientCardComponent } from "../../components/PatientCardComponent/Pati
 export const HomePage = () => {
   const { auth } = useContext(AuthContext);
   const loggedUser = JSON.parse(localStorage.getItem('logged-user'))
-  
+
   const patientInput = useRef();
 
   const handleSearchButton = () => {
     console.log('clicou')
   }
 
-  const patientData = [
+  const patientData = JSON.parse(localStorage.getItem('registered-patients')) || [
     {
-      icon: BiSolidUserCircle,
+      icon: "/images/profile-user.png",
       name: 'Cesar Abascal',
       age: '30 anos',
       phone: '(55) 9 9999-9999',
-      plan: 'Unimed'
+      insurance: 'Unimed'
     },
     {
-      icon: BiSolidUserCircle,
+      icon: "/images/profile-user.png",
       name: 'Cesar Abascal',
       age: '30 anos',
       phone: '(55) 9 9999-9999',
-      plan: 'Unimed'
+      insurance: 'Unimed'
     },
     {
-      icon: BiSolidUserCircle,
+      icon: "/images/profile-user.png",
       name: 'Cesar Abascal',
       age: '30 anos',
       phone: '(55) 9 9999-9999',
-      plan: 'Unimed'
+      insurance: 'Unimed'
     },
     {
-      icon: BiSolidUserCircle,
+      icon: "/images/profile-user.png",
       name: 'Cesar Abascal',
       age: '30 anos',
       phone: '(55) 9 9999-9999',
-      plan: 'Unimed'
+      insurance: 'Unimed'
     },
     {
-      icon: BiSolidUserCircle,
+      icon: "/images/profile-user.png",
       name: 'Cesar Abascal',
       age: '30 anos',
       phone: '(55) 9 9999-9999',
-      plan: 'Unimed'
+      insurance: 'Unimed'
     },
   ]
 
