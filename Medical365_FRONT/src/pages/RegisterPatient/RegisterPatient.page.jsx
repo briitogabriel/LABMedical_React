@@ -34,6 +34,13 @@ export const RegisterPatient = () => {
   const registeredPatients = JSON.parse(localStorage.getItem('registered-patients')) || [];
   console.log(RegisterPatientSchema)
 
+  const getMaxId = (patientList) => {  
+    const maxId = patientList.reduce((max, item) => {
+      return item.id > max ? item.id : max;
+    }, patientList[0].id);
+    return maxId;
+  };
+
   const formik = useFormik({
     initialValues,
     validationSchema: RegisterPatientSchema,
@@ -45,6 +52,10 @@ export const RegisterPatient = () => {
       const today = new Date();
       const differenceInMs = today - birthDate;
       values.age = `${Math.floor(differenceInMs / 31536000000)} anos`;
+
+      const maxIdRegistered = getMaxId(registeredPatients);
+      values.id = maxIdRegistered + 1;
+      
       registeredPatients.push(values)
       localStorage.setItem('registered-patients', JSON.stringify(registeredPatients))
     },
@@ -72,9 +83,9 @@ export const RegisterPatient = () => {
         </Styled.InputGroup>
         <Styled.InputGroup className={`col-md-4`}>
           <Styled.Label htmlFor='gender' className="form-label">Gênero</Styled.Label>
-          <select id="gender" name='gender' className="form-select" onChange={formik.handleChange} >
-            <option defaultValue value={formik.values.gender}>Masculino</option>
-            <option value={formik.values.gender}>Feminino</option>
+          <select id="gender" name='gender' className="form-select" onChange={formik.handleChange} value={formik.values.gender}>
+            <option defaultValue >Masculino</option>
+            <option>Feminino</option>
           </select>
           {formik.touched.gender && formik.errors.gender && (<Styled.Error>{formik.errors.gender}</Styled.Error>)}
         </Styled.InputGroup>
@@ -96,11 +107,11 @@ export const RegisterPatient = () => {
         </Styled.InputGroup>
         <Styled.InputGroup className={`col-md-4`}>
           <Styled.Label htmlFor='civilState' className="form-label">Estado Civil</Styled.Label>
-          <select id="civilState" name='civilState' className="form-select" onChange={formik.handleChange} >
-            <option defaultValue value={formik.values.civilState}>Solteiro/a</option>
-            <option value={formik.values.civilState}>Casado/a</option>
-            <option value={formik.values.civilState}>Divorciado/a</option>
-            <option value={formik.values.civilState}>Viúvo/a</option>
+          <select id="civilState" name='civilState' className="form-select" onChange={formik.handleChange} value={formik.values.civilState} >
+            <option defaultValue>Solteiro/a</option>
+            <option>Casado/a</option>
+            <option>Divorciado/a</option>
+            <option>Viúvo/a</option>
           </select>
           {formik.touched.civilState && formik.errors.civilState && (<Styled.Error>{formik.errors.civilState}</Styled.Error>)}
         </Styled.InputGroup>
@@ -169,7 +180,7 @@ export const RegisterPatient = () => {
         </Styled.InputGroup>
         <Styled.InputGroup className={`col-md-2`}>
           <Styled.Label htmlFor='state' className="form-label">Estado</Styled.Label>
-          <input name='state' type='text' className="form-control" id='state' onChange={formik.handleChange} value={formik.values.city} />
+          <input name='state' type='text' className="form-control" id='state' onChange={formik.handleChange} value={formik.values.state} />
           {formik.touched.state && formik.errors.state && (<Styled.Error>{formik.errors.state}</Styled.Error>)}
         </Styled.InputGroup>
 

@@ -15,13 +15,13 @@ const RegisterPatientSchema = Yup.object().shape({
   civilState: Yup.string().required('Estado civil é obrigatório'),
   phone: Yup.string()
     .required('Telefone é obrigatório')
-    .matches(/^\(\d{2}\) \d \d{4}-\d{4}$/, 'Telefone inválido'),
+    .matches(/^\(\d{2}\) \d{4}-\d{4}$|^\(\d{2}\) \d{5}-\d{4}$/, 'Telefone inválido'),
   email: Yup.string().email('E-mail inválido'),
   placeOfBirth: Yup.string()
     .required('Naturalidade é obrigatória')
     .min(5, 'Naturalidade deve ter pelo menos 5 caracteres')
     .max(50, 'Naturalidade deve ter no máximo 50 caracteres'),
-  emergencyContact: Yup.string().matches(/^\(\d{2}\) \d \d{4}-\d{4}$/, 'Contato de emergência inválido'),
+  emergencyContact: Yup.string().matches(/^\(\d{2}\) \d{4}-\d{4}$|^\(\d{2}\) \d{5}-\d{4}$/, 'Contato de emergência inválido'),
   allergies: Yup.array(),
   specificCare: Yup.array(),
   insurance: Yup.string(),
