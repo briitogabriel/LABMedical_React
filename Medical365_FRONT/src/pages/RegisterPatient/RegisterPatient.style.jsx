@@ -15,3 +15,11 @@ export const Header = styled.div`
   justify-content: space-between;
   margin-bottom: 10px;
 `;
+
+export const InputGroup = styled.div`
+  margin-top: 5px;
+`;
+
+export const Label = styled.label`
+  margin-bottom: 5px;
+`;
