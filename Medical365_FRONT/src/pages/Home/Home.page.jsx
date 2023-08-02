@@ -22,6 +22,7 @@ export const HomePage = () => {
 
   const patientData = JSON.parse(localStorage.getItem('registered-patients')) || [
     {
+      id: 1,
       icon: "/images/profile-user.png",
       name: 'Cesar Abascal',
       age: '30 anos',
@@ -29,6 +30,7 @@ export const HomePage = () => {
       insurance: 'Unimed'
     },
     {
+      id: 2,
       icon: "/images/profile-user.png",
       name: 'Cesar Abascal',
       age: '30 anos',
@@ -36,6 +38,7 @@ export const HomePage = () => {
       insurance: 'Unimed'
     },
     {
+      id: 3,
       icon: "/images/profile-user.png",
       name: 'Cesar Abascal',
       age: '30 anos',
@@ -43,6 +46,7 @@ export const HomePage = () => {
       insurance: 'Unimed'
     },
     {
+      id: 4,
       icon: "/images/profile-user.png",
       name: 'Cesar Abascal',
       age: '30 anos',
@@ -50,6 +54,7 @@ export const HomePage = () => {
       insurance: 'Unimed'
     },
     {
+      id: 5,
       icon: "/images/profile-user.png",
       name: 'Cesar Abascal',
       age: '30 anos',
@@ -57,6 +62,8 @@ export const HomePage = () => {
       insurance: 'Unimed'
     },
   ]
+
+  JSON.parse(localStorage.getItem('registered-patients')) == null ? localStorage.setItem('registered-patients', JSON.stringify(patientData)) : null
 
   const render = () => {
     return(
