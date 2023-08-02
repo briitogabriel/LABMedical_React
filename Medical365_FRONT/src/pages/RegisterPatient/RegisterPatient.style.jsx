@@ -4,8 +4,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 2%;
-  padding-top: 10px;
+  padding: 10px 2%;
 `;
 
 export const Header = styled.div`
@@ -22,4 +21,9 @@ export const InputGroup = styled.div`
 
 export const Label = styled.label`
   margin-bottom: 5px;
+`;
+
+export const Error = styled.div`
+  color: #f13636;
+  font-size: 80%;
 `;
