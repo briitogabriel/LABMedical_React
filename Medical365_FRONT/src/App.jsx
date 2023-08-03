@@ -5,6 +5,7 @@ import { Layout } from './layout/Layout'
 import { HomePage } from './pages/Home/Home.page'
 import { RegisterPatient } from './pages/RegisterPatient/RegisterPatient.page'
 import { RegisterAppointment } from './pages/RegisterAppointment/RegisterAppointment.page'
+import { RegisterExam } from './pages/RegisterExam/RegisterExam.page'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='/' element={<HomePage/>}/>
           <Route path='/registrar-paciente' element={<RegisterPatient />}/>
           <Route path='/registrar-consulta' element={<RegisterAppointment />}/>
+          <Route path='/registrar-exame' element={<RegisterExam />}/>
           <Route path='*' element={<h1>Página não encontrada!</h1>} />
         </Route>
       </Routes>
