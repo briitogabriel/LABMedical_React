@@ -69,15 +69,15 @@ OBS: O usuário padrão pré cadastrado é o ADMIN:
   password: admin123
 ```
 
-- **/register-patient**  => Cadastrar/atualizar pacientes. Possui um Formulário com validações dos campos obrigatórios.
+- **/registrar-paciente**  => Cadastrar/atualizar pacientes. Possui um Formulário com validações dos campos obrigatórios.
 
-- **/register-appointment**  => Cadastrar/atualizar consultas. Possui um Formulário com validações dos campos obrigatórios.
+- **/registrar-consulta**  => Cadastrar/atualizar consultas. Possui um Formulário com validações dos campos obrigatórios.
 
-- **/register-exam**  => Cadastrar/atualizar exames. Possui um Formulário com validações dos campos obrigatórios.
+- **/registrar-exame**  => Cadastrar/atualizar exames. Possui um Formulário com validações dos campos obrigatórios.
 
-- **/medical-records**  => Listagem dos pacientes cadastrados com opções para ver mais detalhes dos seus registros.
+- **/prontuarios**  => Listagem dos pacientes cadastrados com opções para ver mais detalhes dos seus registros.
 
-- **/patient-records/:id**  => Listagem dos prontuários do paciente em questão.
+- **/paciente-prontuario/:id**  => Listagem dos prontuários do paciente em questão.
 
  - ## Melhorias futuras
 
