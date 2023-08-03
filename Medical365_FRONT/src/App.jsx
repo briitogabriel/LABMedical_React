@@ -4,6 +4,7 @@ import LoginPage from './pages/LoginPage/Login.page'
 import { Layout } from './layout/Layout'
 import { HomePage } from './pages/Home/Home.page'
 import { RegisterPatient } from './pages/RegisterPatient/RegisterPatient.page'
+import { RegisterAppointment } from './pages/RegisterAppointment/RegisterAppointment.page'
 
 function App() {
 
@@ -13,9 +14,10 @@ function App() {
         <Route path='/login' element={<LoginPage/>} />
         <Route path='/' element={<Layout/>}>
           <Route path='/' element={<HomePage/>}/>
-          <Route path='/register-patient' element={<RegisterPatient />}/>
+          <Route path='/registrar-paciente' element={<RegisterPatient />}/>
+          <Route path='/registrar-consulta' element={<RegisterAppointment />}/>
+          <Route path='*' element={<h1>Página não encontrada!</h1>} />
         </Route>
-        {/* <Route path='*' element={<ErrorPage/>} /> */}
       </Routes>
     </Router>
   )
